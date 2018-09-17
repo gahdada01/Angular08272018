@@ -7,19 +7,50 @@ import { MangaedenService } from '../../service/mangaeden.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  mangalist = {};
+  mangalist = [];
+  discription:String;
+  total:Number;
+  page:Number;
+  pageSize:Number = 25;
+  url:String;
 
   constructor(private mangaedenService: MangaedenService) { }
 
   ngOnInit() {
-    this.show();
+    this.showMangaedenList(this.pageSize);
   }
 
-  show() {
-    this.mangaedenService.getList()
+  isRedered(id) {
+    console.log(id);
+    this.discription = null;
+    this.url = null;
+
+    this.mangaedenService.getInfo(id)
       .subscribe(data => {
-        this.mangalist = data;
-        console.log(this.mangalist);
+        this.discription = data.description;
+        this.url = 'https://cdn.mangaeden.com/mangasimg/' + data.image;
+        console.log(this.url);
+
+        this.mangaedenService.getImage(this.url)
+          .subscribe(image => {
+            // console.log(image);
+            this.url = image;
+          });
+
+      });
+
+  }
+
+  paginator() {
+    console.log('click paginator');
+  }
+
+  showMangaedenList(pageSize) {
+    this.mangaedenService.getList(pageSize)
+      .subscribe(data => {
+        this.mangalist = data.manga;
+        this.page = data.page;
+        this.total = data.total;
       });
   }
 

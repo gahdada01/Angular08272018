@@ -1,5 +1,33 @@
-<li *ngFor="let list of mangalist">
-  <p>
-    {{list.manga.a}}
-  </p>
-</li>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let list of mangalist" (click)="isRedered(list.i)">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{list.t}}
+      </mat-panel-title>
+      <mat-panel-description class="list-alias">
+        {{list.a}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <p>https://cdn.mangaeden.com/mangasimg/{{list.im}}</p>
+
+    <img src="{{url}}" class="list.image">
+
+    <mat-chip-list>
+      <mat-chip *ngFor="let genre of list.c" class="list-chip">{{genre}}</mat-chip>
+    </mat-chip-list>
+
+    <div class="list-discription" [innerHTML]='discription'>
+      {{discription}}
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-paginator [length]="total"
+              [pageSize]="25"
+              (click)="paginator()"
+>
+</mat-paginator>
+

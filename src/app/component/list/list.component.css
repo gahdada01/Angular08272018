@@ -1,0 +1,23 @@
+.list-alias {
+  width: 400px;
+  flex: initial;
+}
+
+.list-discription {
+  padding: 10px 10px;
+  margin: 10px 0px;
+  background: #04888c;
+  color: white;
+  border-radius: 5px;
+}
+
+.list-chip {
+  color: #fff;
+  background: #03acb1;
+  letter-spacing: 0.3px;
+}
+
+.list.image {
+  width: 247px;
+  height: 537px;
+}
