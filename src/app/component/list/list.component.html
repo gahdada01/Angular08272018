@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let list of mangalist" (click)="isRedered(list.i)">
+  <mat-expansion-panel *ngFor="let list of mangalist"(click)="isRedered(list.i)">
 
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -10,9 +10,12 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <p>https://cdn.mangaeden.com/mangasimg/{{list.im}}</p>
-
-    <img src="{{url}}" class="list.image">
+    <div class="list-image">
+      <img src="{{url}}">
+    </div>
+    <div class="list-details">
+      TEXT
+    </div>
 
     <mat-chip-list>
       <mat-chip *ngFor="let genre of list.c" class="list-chip">{{genre}}</mat-chip>
@@ -27,7 +30,7 @@
 
 <mat-paginator [length]="total"
               [pageSize]="25"
-              (click)="paginator()"
->
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = $event"
+              (click)="getPage(pageEvent)">
 </mat-paginator>
-
