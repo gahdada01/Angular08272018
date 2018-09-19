@@ -10,12 +10,15 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <div class="list-image">
-      <img src="{{url}}">
+    <div class="list-wrapper">
+      <div class="list-image">
+          <img src="{{url}}">
+        </div>
+        <div class="list-details">
+          TEXT
+        </div>
     </div>
-    <div class="list-details">
-      TEXT
-    </div>
+
 
     <mat-chip-list>
       <mat-chip *ngFor="let genre of list.c" class="list-chip">{{genre}}</mat-chip>

@@ -18,10 +18,14 @@
 }
 
 .list-image {
-  width: 350px;
-  height: 350px;
+  width: 200px;
+  height: 310px;
   background: red;
   margin-bottom: 10px;
+}
+
+.list-wrapper {
+  display: inline-flex;
 }
 
 img {
