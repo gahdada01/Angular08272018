@@ -1,13 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, Optional} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
 import 'rxjs/add/operator/map';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MangaedenService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Optional() @Inject(APP_BASE_HREF) origin: string
+  ) {
+    console.log(origin);
+    // this.Url = `${origin}${this.Url}`;
+  }
 
   getList(pageSize) {
     return this.http.get('https://www.mangaeden.com/api/list/0/?p=0&l=' + pageSize)
@@ -30,5 +37,3 @@ export class MangaedenService {
     return res || {};
   }
 }
-
-// https://limitless-headland-61982.herokuapp.com/ | https://git.heroku.com/limitless-headland-61982.git
