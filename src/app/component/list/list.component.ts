@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   total:Number;
   page:Number;
   pageSize:Number = 25;
-  url:String = '/assets/img/img1.jpeg';
+  url:String;
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -40,7 +40,7 @@ export class ListComponent implements OnInit {
 
   isRedered(id) {
     this.discription = null;
-    this.url = null;
+    this.url = '/assets/img/img1.jpeg';
 
     this.mangaedenService.getInfo(id)
       .subscribe(data => {
