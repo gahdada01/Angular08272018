@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   total:Number;
   page:Number;
   pageSize:Number = 25;
-  url:String;
+  url:String = '/assets/img/img1.jpeg';
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -35,8 +35,6 @@ export class ListComponent implements OnInit {
       } else {
         this.url = 'https://cdn.mangaeden.com/mangasimg/' + data;
       }
-    } else {
-      this.url = '/src/assets/img/img1.jpeg';
     }
   }
 
